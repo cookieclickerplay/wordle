@@ -1,132 +1,302 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
 
-    <title>Wordle - A daily word game</title>
-    <meta name="description" content="Guess the hidden word in 6 tries. A new puzzle is available each day.">
+    <title>Wordle - A Daily Word Game</title>
+    <meta
+      name="description"
+      content="Wordle - Free word guessing game, daily brain challenge with new words. Improve your vocabulary by guessing words in 6 tries."
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./ico/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./ico/site.webmanifest" />
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./ico/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./ico/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./ico/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./ico/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./ico/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Wordle Game",
+        "description": "Wordle is an engaging word guessing game where players have 6 attempts to guess a 5-letter word.",
+        "url": "https://www.dailywordle.com",
+        "author": {
+          "@type": "Organization",
+          "name": "Daily Wordle",
+          "url": "https://www.dailywordle.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "gameCategory": "Word Game",
+        "numberOfPlayers": {
+          "@type": "QuantitativeValue",
+          "minValue": "1",
+          "maxValue": "1"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "1000000"
+        }
+      }
+    </script>
 
     <!-- FB Meta Tags -->
-    <meta property="og:url" content="https://www.powerlanguage.co.uk/wordle/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Wordle - A daily word game">
-    <meta property="og:description" content="Guess the hidden word in 6 tries. A new puzzle is available each day.">
-    <meta property="og:image" content="https://www.dailywordle.com/images/wordle_og_1200x630.png">
+    <meta property="og:url" content="https://www.powerlanguage.co.uk/wordle/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Wordle - A daily word game" />
+    <meta
+      property="og:description"
+      content="Guess the hidden word in 6 tries. A new puzzle is available each day."
+    />
+    <meta
+      property="og:image"
+      content="https://www.dailywordle.com/images/wordle_og_1200x630.png"
+    />
 
     <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="powerlanguage.co.uk">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="powerlanguage.co.uk" />
 
-    <meta name="theme-color" content="#6aaa64">
-    <link rel="manifest" href="manifest.json">
-    <link href="images/wordle_logo_32x32.png" rel="icon shortcut" sizes="3232">
-    <link href="images/wordle_logo_192x192.png" rel="apple-touch-icon">
+    <link rel="manifest" href="manifest.json" />
+    <link
+      href="images/wordle_logo_32x32.png"
+      rel="icon shortcut"
+      sizes="3232"
+    />
+    <link href="images/wordle_logo_192x192.png" rel="apple-touch-icon" />
 
     <style>
-        /* Global Styles & Colors */
-        :root {
-            --green: #6aaa64;
-            --darkendGreen: #538d4e;
-            --yellow: #c9b458;
-            --darkendYellow: #b59f3b;
-            --lightGray: #d8d8d8;
-            --gray: #86888a;
-            --darkGray: #939598;
-            --white: #fff;
-            --black: #212121;
-            /* Colorblind colors */
-            --orange: #f5793a;
-            --blue: #85c0f9;
-            font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 16px;
-            --header-height: 50px;
-            --keyboard-height: 200px;
-            --game-max-width: 500px;
-        }
-        /* Light theme colors */
-        :root {
-            --color-tone-1: #1a1a1b;
-            --color-tone-2: #787c7e;
-            --color-tone-3: #878a8c;
-            --color-tone-4: #d3d6da;
-            --color-tone-5: #edeff1;
-            --color-tone-6: #f6f7f8;
-            --color-tone-7: #ffffff;
-            --opacity-50: rgba(255, 255, 255, 0.5);
-        }
-        /* Dark Theme Colors */
-        .nightmode {
-            --color-tone-1: #d7dadc;
-            --color-tone-2: #818384;
-            --color-tone-3: #565758;
-            --color-tone-4: #3a3a3c;
-            --color-tone-5: #272729;
-            --color-tone-6: #1a1a1b;
-            --color-tone-7: #121213;
-            --opacity-50: rgba(0, 0, 0, 0.5);
-        }
-        /* Constant colors and colors derived from theme */
-        :root,
-        .nightmode {
-            --color-background: var(--color-tone-7);
-        }
-        :root {
-            --color-present: var(--yellow);
-            --color-correct: var(--green);
-            --color-absent: var(--color-tone-2);
-            --tile-text-color: var(--color-tone-7);
-            --key-text-color: var(--color-tone-1);
-            --key-evaluated-text-color: var(--color-tone-7);
-            --key-bg: var(--color-tone-4);
-            --key-bg-present: var(--color-present);
-            --key-bg-correct: var(--color-correct);
-            --key-bg-absent: var(--color-absent);
-            --modal-content-bg: var(--color-tone-7);
-        }
-        .nightmode {
-            --color-present: var(--darkendYellow);
-            --color-correct: var(--darkendGreen);
-            --color-absent: var(--color-tone-4);
-            --tile-text-color: var(--color-tone-1);
-            --key-text-color: var(--color-tone-1);
-            --key-evaluated-text-color: var(--color-tone-1);
-            --key-bg: var(--color-tone-2);
-            --key-bg-present: var(--color-present);
-            --key-bg-correct: var(--color-correct);
-            --key-bg-absent: var(--color-absent);
-            --modal-content-bg: var(--color-tone-7);
-        }
-        .colorblind {
-            --color-correct: var(--orange);
-            --color-present: var(--blue);
-            --tile-text-color: var(--white);
-            --key-bg-present: var(--color-present);
-            --key-bg-correct: var(--color-correct);
-            --key-bg-absent: var(--color-absent);
-        }
-        html {
-            height: 100%;
-        }
-        body {
-            height: 100%;
-            background-color: var(--color-background);
-            margin: 0;
-            padding: 0;
-            /* Prevent scrollbar appearing on page transition */
-            overflow-y: hidden;
-        }
+      /* Global Styles & Colors */
+      :root {
+        --green: #6aaa64;
+        --darkendGreen: #538d4e;
+        --yellow: #c9b458;
+        --darkendYellow: #b59f3b;
+        --lightGray: #d8d8d8;
+        --gray: #86888a;
+        --darkGray: #939598;
+        --white: #fff;
+        --black: #212121;
+        /* Colorblind colors */
+        --orange: #f5793a;
+        --blue: #85c0f9;
+        font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        --header-height: 50px;
+        --keyboard-height: 200px;
+        --game-max-width: 500px;
+      }
+      /* Light theme colors */
+      :root {
+        --color-tone-1: #1a1a1b;
+        --color-tone-2: #787c7e;
+        --color-tone-3: #878a8c;
+        --color-tone-4: #d3d6da;
+        --color-tone-5: #edeff1;
+        --color-tone-6: #f6f7f8;
+        --color-tone-7: #ffffff;
+        --opacity-50: rgba(255, 255, 255, 0.5);
+      }
+      /* Dark Theme Colors */
+      .nightmode {
+        --color-tone-1: #d7dadc;
+        --color-tone-2: #818384;
+        --color-tone-3: #565758;
+        --color-tone-4: #3a3a3c;
+        --color-tone-5: #272729;
+        --color-tone-6: #1a1a1b;
+        --color-tone-7: #121213;
+        --opacity-50: rgba(0, 0, 0, 0.5);
+      }
+      /* Constant colors and colors derived from theme */
+      :root,
+      .nightmode {
+        --color-background: var(--color-tone-7);
+      }
+      :root {
+        --color-present: var(--yellow);
+        --color-correct: var(--green);
+        --color-absent: var(--color-tone-2);
+        --tile-text-color: var(--color-tone-7);
+        --key-text-color: var(--color-tone-1);
+        --key-evaluated-text-color: var(--color-tone-7);
+        --key-bg: var(--color-tone-4);
+        --key-bg-present: var(--color-present);
+        --key-bg-correct: var(--color-correct);
+        --key-bg-absent: var(--color-absent);
+        --modal-content-bg: var(--color-tone-7);
+      }
+      .nightmode {
+        --color-present: var(--darkendYellow);
+        --color-correct: var(--darkendGreen);
+        --color-absent: var(--color-tone-4);
+        --tile-text-color: var(--color-tone-1);
+        --key-text-color: var(--color-tone-1);
+        --key-evaluated-text-color: var(--color-tone-1);
+        --key-bg: var(--color-tone-2);
+        --key-bg-present: var(--color-present);
+        --key-bg-correct: var(--color-correct);
+        --key-bg-absent: var(--color-absent);
+        --modal-content-bg: var(--color-tone-7);
+      }
+      .colorblind {
+        --color-correct: var(--orange);
+        --color-present: var(--blue);
+        --tile-text-color: var(--white);
+        --key-bg-present: var(--color-present);
+        --key-bg-correct: var(--color-correct);
+        --key-bg-absent: var(--color-absent);
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        background-color: var(--color-background);
+        margin: 0;
+        padding: 0;
+        /* Prevent scrollbar appearing on page transition */
+        overflow-y: hidden;
+      }
+
+      /* Content section styles */
+      .content-section {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        color: var(--color-tone-1);
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .content-section h3,
+      .content-section h4,
+      .content-section h5,
+      .content-section h6 {
+        margin: 1.5em 0 0.8em;
+        color: var(--color-tone-1);
+      }
+
+      .content-section p {
+        margin-bottom: 1em;
+      }
+
+      .article-content {
+        margin-top: 30px;
+        padding: 20px;
+        background: var(--color-tone-7);
+        border-radius: 8px;
+      }
     </style>
-</head>
-<body>
-<script>
-    (function () {
+  </head>
+  <body>
+    <script>
+      (function () {
         // Defining the hash before the main bundle allows the bundle access window.hash
         window.wordle = window.wordle || {};
-        window.wordle.hash = 'e65ce0a5';
-    })();
-</script>
-<script src="main.js"></script>
-<game-app></game-app>
+        window.wordle.hash = "e65ce0a5";
+      })();
+    </script>
+    <script src="main.js"></script>
+    <game-app></game-app>
 
+    <div class="content-section">
+      <h3>How to Play Wordle - An Engaging Brain Game</h3>
+      <p>
+        Wordle is a unique and fun word guessing game loved by millions of
+        players worldwide. With simple but challenging rules, players have 6
+        attempts to guess a mysterious 5-letter word. Each guess provides
+        color-coded clues to help you find the correct word.
+      </p>
 
-</body></html>
+      <h4>Detailed Rules and How to Play</h4>
+      <p>
+        - Each guess must be a valid 5-letter word<br />
+        - Green: Letter is correct and in right position<br />
+        - Yellow: Letter is in the word but wrong position<br />
+        - Gray: Letter is not in the target word<br />
+        - You have 6 tries to guess today's word
+      </p>
+
+      <h5>Effective Strategies and Techniques</h5>
+      <p>
+        To increase your chances of winning, try these strategies: - Start with
+        words containing common vowels (A, E, I, O, U)<br />
+        - Prioritize common consonants like S, T, R, N, L<br />
+        - Carefully analyze clues from previous guesses<br />
+        - Remember common word patterns
+      </p>
+
+      <h6>Benefits of Playing Wordle</h6>
+      <p>
+        - Develop vocabulary and language skills<br />
+        - Train logical thinking and analysis<br />
+        - Enhance focus and memory<br />
+        - Healthy entertainment and daily brain challenge
+      </p>
+
+      <div class="article-content">
+        <h4>Learn More About Wordle</h4>
+        <p>
+          Wordle was developed by Josh Wardle and quickly became a global
+          phenomenon. The game is not just a word guessing game, but also a
+          community where players share their results and strategies daily.
+        </p>
+        <p>
+          With its simple interface, ease of use, and no account required,
+          Wordle is the perfect choice for quick daily entertainment. Each day
+          brings a new word and a new challenge waiting for you to discover.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
